@@ -26,19 +26,19 @@ import { Input } from "@/components/ui/input";
 import { Logo } from "@/components/logo";
 
 const formSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  password: z.string().min(1, {
-    message: "Password is required.",
-  }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." }),
 });
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // For demo purposes, we'll just navigate to the dashboard
+    // For demo purposes, navigate to dashboard
     router.push("/dashboard");
   }
 
@@ -57,12 +57,27 @@ export default function LoginPage() {
           <div className="mb-4 flex justify-center">
             <Logo />
           </div>
-          <CardTitle>Welcome Back!</CardTitle>
-          <CardDescription>Log in to access your dashboard</CardDescription>
+          <CardTitle>Create an Account</CardTitle>
+          <CardDescription>
+            Start your journey to peak productivity.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="email"
@@ -90,14 +105,14 @@ export default function LoginPage() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Log In
+                Create Account
               </Button>
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="underline">
-              Sign up
+            Already have an account?{" "}
+            <Link href="/" className="underline">
+              Log in
             </Link>
           </div>
         </CardContent>
