@@ -1,7 +1,27 @@
-# PersonalZenith
+# 🚀 TooProductive
 
-This is a comprehensive AI-powered productivity hub designed for personal organization. Key features include tracking expenses with AI insights, managing daily tasks with smart prioritization, monitoring a stock portfolio, and logging reading progress with AI-driven book recommendations.
+TooProductive is your **all-in-one personal productivity hub** — combining task management, expense tracking, portfolio monitoring, and reading progress into a single sleek dashboard.  
+It’s designed to help you **stay organized, track goals, and boost productivity** with an intuitive interface and smart features.
 
-This Next.js application was generated with Firebase Studio.
+---
 
-To get started, run `npm install` and then `npm run dev`.
+## ✨ Features
+
+- **📋 Task Management** – Create, prioritize, and track tasks with progress indicators.
+- **💰 Expense Tracking** – Monitor your spending with monthly comparisons.
+- **📈 Portfolio Snapshot** – View your investment portfolio’s performance at a glance.
+- **📚 Reading Tracker** – Keep track of your reading progress and goals.
+- **🎯 Gamification** – Earn points and badges as you complete tasks.
+- **☁ Cloud Sync** – Powered by Firebase for real-time updates and secure data storage.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** Next.js, TypeScript, Tailwind CSS
+- **Backend & Hosting:** Firebase
+- **Authentication:** Firebase Auth
+- **Database:** Firestore
+- **Version Control:** Git & GitHub
+
+
