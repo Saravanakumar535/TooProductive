@@ -143,8 +143,12 @@ export default function ExpensesClient() {
                     <TableCell>{expense.category}</TableCell>
                     <TableCell>{format(expense.date, "PPP")}</TableCell>
                     <TableCell className="text-right">
-                      ${expense.amount.toFixed(2)}
-                    </TableCell>
+                {expense.amount.toLocaleString("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                })}
+              </TableCell>
+
                   </TableRow>
                 ))}
               </TableBody>

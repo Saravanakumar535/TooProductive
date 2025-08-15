@@ -126,15 +126,15 @@ export default function DashboardLayout({
                 <div className="flex cursor-pointer items-center gap-3 rounded-md p-2 transition-colors hover:bg-sidebar-accent">
                   <Avatar className="h-8 w-8">
                     <AvatarImage
-                      src="https://placehold.co/40x40.png"
+                      src="/avatar.jpg"
                       alt="User"
                     />
                     <AvatarFallback>U</AvatarFallback>
                   </Avatar>
                   <div className="overflow-hidden group-data-[collapsible=icon]:hidden">
-                    <p className="truncate text-sm font-medium">Demo User</p>
+                    <p className="truncate text-sm font-medium">Saravanakumar M</p>
                     <p className="truncate text-xs text-muted-foreground">
-                      demo@example.com
+                      msaravanakumar2005@gmail.com
                     </p>
                   </div>
                 </div>

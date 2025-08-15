@@ -63,7 +63,7 @@ type Task = {
 };
 
 const initialTasks: Task[] = [
-  { id: 1, title: "Finalize Q3 report", priority: "high", completed: false },
+  { id: 1, title: "Finalize Q5 report", priority: "high", completed: false },
   { id: 2, title: "Draft marketing email", priority: "medium", completed: false },
   { id: 3, title: "Book flight for conference", priority: "low", completed: true },
   { id: 4, title: "Schedule team meeting", priority: "medium", completed: false },
@@ -192,11 +192,12 @@ export default function TasksClient() {
               />
               <span
                 className={`flex-1 ${
-                  task.completed ? "text-muted-foreground line-through" : ""
+                  task.completed ? "text-muted-foreground" : ""
                 }`}
               >
                 {task.title}
               </span>
+
               <Badge
                 className={`mr-4 ${priorityColors[task.priority]} hover:${priorityColors[task.priority]}`}
               >
