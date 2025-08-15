@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
+    Award,
   BookOpen,
   CreditCard,
   LayoutDashboard,
@@ -24,6 +25,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 import {
   Sidebar,
   SidebarContent,
@@ -36,6 +38,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import { Logo } from "@/components/logo";
+import { Badge } from "@/components/ui/badge";
 
 const navItems = [
   {
@@ -77,6 +80,11 @@ export default function DashboardLayout({
     router.push("/");
   };
 
+  const userLevel = 5;
+  const userXP = 450;
+  const xpForNextLevel = 1000;
+  const xpProgress = (userXP / xpForNextLevel) * 100;
+
   return (
     <SidebarProvider>
       <div className="flex min-h-screen">
@@ -102,6 +110,17 @@ export default function DashboardLayout({
             </SidebarMenu>
           </SidebarContent>
           <SidebarFooter>
+            <div className="p-2 space-y-2 group-data-[collapsible=icon]:hidden">
+                <div className="text-center text-sm">
+                    Level <Badge variant="secondary">{userLevel}</Badge>
+                </div>
+                <Progress value={xpProgress} className="h-2" />
+                <p className="text-xs text-muted-foreground text-center">{userXP} / {xpForNextLevel} XP</p>
+                <div className="flex justify-center gap-2 flex-wrap">
+                    <Badge variant="outline" className="flex items-center gap-1 border-yellow-500 text-yellow-500"><Award className="h-3 w-3" /> Task Master</Badge>
+                    <Badge variant="outline" className="flex items-center gap-1 border-green-500 text-green-500"><Award className="h-3 w-3" /> Reading Champ</Badge>
+                </div>
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <div className="flex cursor-pointer items-center gap-3 rounded-md p-2 transition-colors hover:bg-sidebar-accent">

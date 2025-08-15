@@ -37,6 +37,11 @@
     --sidebar-accent-foreground: 225 100% 67%;
     --sidebar-border: 225 20% 85%;
     --sidebar-ring: 225 100% 67%;
+
+    --confetti-color-1: 225 100% 67%;
+    --confetti-color-2: 261 100% 71%;
+    --confetti-color-3: 43 74% 66%;
+    --confetti-color-4: 173 58% 39%;
   }
   .dark {
     --background: 220 14% 10%;
@@ -81,4 +86,42 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+  
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 16px;
+      background: hsl(var(--confetti-color-1));
+      opacity: 0;
+      animation: confetti-fall 5s ease-out infinite;
+    }
+  
+    .confetti:nth-child(4n) { background: hsl(var(--confetti-color-1)); }
+    .confetti:nth-child(4n+1) { background: hsl(var(--confetti-color-2)); }
+    .confetti:nth-child(4n+2) { background: hsl(var(--confetti-color-3)); }
+    .confetti:nth-child(4n+3) { background: hsl(var(--confetti-color-4)); }
+  
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
 }

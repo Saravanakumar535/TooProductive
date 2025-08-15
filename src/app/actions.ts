@@ -6,6 +6,11 @@ import {
   type ExpenseInsightsOutput,
 } from "@/ai/flows/expense-insights";
 import {
+  getPersonalChallenges,
+  type PersonalChallengesInput,
+  type PersonalChallengesOutput,
+} from "@/ai/flows/personal-challenges";
+import {
   getReadingRecommendations,
   type ReadingRecommendationsInput,
   type ReadingRecommendationsOutput,
@@ -21,4 +26,10 @@ export async function getReadingRecommendationsAction(
   input: ReadingRecommendationsInput
 ): Promise<ReadingRecommendationsOutput> {
   return await getReadingRecommendations(input);
+}
+
+export async function getPersonalChallengesAction(
+  input: PersonalChallengesInput
+): Promise<PersonalChallengesOutput> {
+  return await getPersonalChallenges(input);
 }

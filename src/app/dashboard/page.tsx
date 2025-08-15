@@ -6,7 +6,9 @@ import {
   Circle,
   CreditCard,
   DollarSign,
+  Sparkles,
   TrendingUp,
+  Award,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,6 +21,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { ProgressRing } from "@/components/ui/progress-ring";
 
 export default function DashboardPage() {
   return (
@@ -29,27 +32,75 @@ export default function DashboardPage() {
       </header>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="lg:col-span-1">
+            <CardHeader>
+                <CardTitle>Daily Progress</CardTitle>
+                <CardDescription>Your goals for today.</CardDescription>
+            </CardHeader>
+            <CardContent className="flex justify-around items-center">
+                <div className="flex flex-col items-center gap-2">
+                    <ProgressRing value={75} className="h-20 w-20 text-primary" />
+                    <span className="text-sm font-medium">Tasks</span>
+                    <span className="text-xs text-muted-foreground">3/4 Done</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <ProgressRing value={65} className="h-20 w-20 text-accent" />
+                    <span className="text-sm font-medium">Reading</span>
+                    <span className="text-xs text-muted-foreground">4-day streak</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <ProgressRing value={90} className="h-20 w-20 text-green-500" />
+                    <span className="text-sm font-medium">Budget</span>
+                    <span className="text-xs text-muted-foreground">3 days under</span>
+                </div>
+            </CardContent>
+        </Card>
+        
         <Card className="lg:col-span-2">
           <CardHeader>
+            <CardTitle className="flex items-center gap-2"><Sparkles className="text-accent h-5 w-5"/> AI Personal Challenges</CardTitle>
+            <CardDescription>Complete these for bonus XP!</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4 sm:grid-cols-2">
+                <Card className="bg-secondary/50">
+                    <CardHeader>
+                        <CardTitle className="text-base flex items-center gap-2"><Award className="text-yellow-500 h-5 w-5"/> Reading Rival</CardTitle>
+                        <CardDescription>Read 50 more pages than last week.</CardDescription>
+                    </CardHeader>
+                    <CardFooter>
+                        <p className="text-sm font-bold text-primary">+500 XP</p>
+                    </CardFooter>
+                </Card>
+                <Card className="bg-secondary/50">
+                    <CardHeader>
+                        <CardTitle className="text-base">Budget Pro</CardTitle>
+                        <CardDescription>Save $20 more than last week.</CardDescription>
+                    </CardHeader>
+                    <CardFooter>
+                        <p className="text-sm font-bold text-primary">+300 XP</p>
+                    </CardFooter>
+                </Card>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader>
             <CardTitle>Tasks Overview</CardTitle>
-            <CardDescription>You have 3 active tasks remaining.</CardDescription>
+            <CardDescription>You have 1 active task remaining.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center">
-                <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                <span className="flex-1">Finalize Q3 report</span>
-                <span className="text-sm text-muted-foreground">High Priority</span>
+                <CheckCircle className="mr-3 h-5 w-5 text-primary" />
+                <span className="flex-1 line-through text-muted-foreground">Finalize Q3 report</span>
               </div>
               <div className="flex items-center">
                 <Circle className="mr-3 h-5 w-5 text-yellow-500" />
                 <span className="flex-1">Draft marketing email</span>
-                <span className="text-sm text-muted-foreground">Medium Priority</span>
               </div>
               <div className="flex items-center">
-                <Circle className="mr-3 h-5 w-5 text-gray-400" />
-                <span className="flex-1">Book flight for conference</span>
-                <span className="text-sm text-muted-foreground">Low Priority</span>
+                <CheckCircle className="mr-3 h-5 w-5 text-primary" />
+                <span className="flex-1 line-through text-muted-foreground">Book flight for conference</span>
               </div>
             </div>
           </CardContent>
@@ -74,25 +125,6 @@ export default function DashboardPage() {
         
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Recent Expenses</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$4,295.50</div>
-            <p className="text-xs text-muted-foreground">+18.2% from last month</p>
-            <div className="mt-4">
-              <Button asChild size="sm" variant="outline">
-                <Link href="/dashboard/expenses">
-                  View All Expenses
-                  <ArrowUpRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Currently Reading</CardTitle>
             <BookOpen className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -112,29 +144,6 @@ export default function DashboardPage() {
                 <Progress value={65} className="mt-2 h-2" />
                 <p className="mt-1 text-xs text-muted-foreground">65% complete</p>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-
-         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Top Spending Category</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-2xl font-bold">Groceries</p>
-                  <p className="text-xs text-muted-foreground">This month</p>
-                </div>
-                <p className="text-2xl font-bold">$450.23</p>
-            </div>
-            <div className="mt-4">
-              <Button asChild size="sm" variant="outline">
-                <Link href="/dashboard/expenses">
-                  Get AI Insights
-                </Link>
-              </Button>
             </div>
           </CardContent>
         </Card>
