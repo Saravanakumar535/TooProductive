@@ -14,7 +14,7 @@ export default {
         headline: ['Inter', 'sans-serif'],
         code: ['monospace'],
       },
-      colors: {
+      colors: { 
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
