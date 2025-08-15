@@ -28,7 +28,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight">Welcome Back, User!</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Welcome Back, Saravana!</h1>
         <p className="text-muted-foreground">Here's your productivity snapshot for today.</p>
       </header>
 
@@ -107,22 +107,34 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Portfolio Snapshot</CardTitle>
-            <CardDescription>Your portfolio is up by 2.1% today.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold">$12,450.80</span>
-              <div className="flex items-center text-green-600">
-                <TrendingUp className="h-5 w-5" />
-                <span className="ml-1 font-semibold">+2.1%</span>
-              </div>
-            </div>
-            <p className="mt-2 text-sm text-muted-foreground">+$255.40 today</p>
-          </CardContent>
-        </Card>
+       <Card>
+  <CardHeader>
+    <CardTitle>Portfolio Snapshot</CardTitle>
+    <CardDescription>Your portfolio is up by 2.1% today.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <div className="flex items-center justify-between">
+      <span className="text-3xl font-bold">
+        {Number(12450.8).toLocaleString("en-IN", {
+          style: "currency",
+          currency: "INR",
+        })}
+      </span>
+      <div className="flex items-center text-green-600">
+        <TrendingUp className="h-5 w-5" />
+        <span className="ml-1 font-semibold">+2.1%</span>
+      </div>
+    </div>
+    <p className="mt-2 text-sm text-muted-foreground">
+      {Number(255.4).toLocaleString("en-IN", {
+        style: "currency",
+        currency: "INR",
+      })}{" "}
+      today
+    </p>
+  </CardContent>
+</Card>
+
         
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">

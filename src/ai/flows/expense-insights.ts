@@ -1,13 +1,4 @@
 'use server';
-
-/**
- * @fileOverview An AI agent that provides insights and reports on spending habits.
- *
- * - getExpenseInsights - A function that generates insights based on spending data.
- * - ExpenseInsightsInput - The input type for the getExpenseInsights function.
- * - ExpenseInsightsOutput - The return type for the getExpenseInsights function.
- */
-
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 

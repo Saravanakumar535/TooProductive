@@ -48,10 +48,10 @@ type Stock = {
 };
 
 const initialPortfolio: Stock[] = [
-  { ticker: "AAPL", name: "Apple Inc.", shares: 10, price: 175.2, change: 2.1, changePercent: 1.21 },
-  { ticker: "GOOGL", name: "Alphabet Inc.", shares: 5, price: 135.5, change: -0.8, changePercent: -0.59 },
-  { ticker: "TSLA", name: "Tesla, Inc.", shares: 15, price: 250.7, change: 5.4, changePercent: 2.20 },
-  { ticker: "AMZN", name: "Amazon.com, Inc.", shares: 8, price: 130.1, change: -1.2, changePercent: -0.91 },
+  { ticker: "AAPL", name: "Apple Inc.", shares: 10, price: 14520.2, change: 210, changePercent: 1.45 },
+  { ticker: "GOOGL", name: "Alphabet Inc.", shares: 5, price: 11235.5, change: -80, changePercent: -0.71 },
+  { ticker: "TSLA", name: "Tesla, Inc.", shares: 15, price: 20850.7, change: 540, changePercent: 2.65 },
+  { ticker: "AMZN", name: "Amazon.com, Inc.", shares: 8, price: 10800.1, change: -120, changePercent: -1.10 },
 ];
 
 export default function PortfolioClient() {
@@ -67,7 +67,7 @@ export default function PortfolioClient() {
     const interval = setInterval(() => {
       setPortfolio((prev) =>
         prev.map((stock) => {
-          const change = (Math.random() - 0.5) * 2;
+          const change = (Math.random() - 0.5) * 200; // random INR change
           const newPrice = Math.max(0, stock.price + change);
           const newChange = newPrice - (stock.price - stock.change);
           const newChangePercent = (newChange / (stock.price - stock.change)) * 100;
@@ -83,13 +83,19 @@ export default function PortfolioClient() {
     return () => clearInterval(interval);
   }, []);
 
+  function formatCurrency(value: number) {
+    return value.toLocaleString("en-IN", {
+      style: "currency",
+      currency: "INR",
+    });
+  }
+
   function addStock(values: z.infer<typeof stockSchema>) {
-    // In a real app, you'd fetch the stock name and price
     const newStock: Stock = {
       ticker: values.ticker,
       name: `${values.ticker} Inc.`,
       shares: values.shares,
-      price: Math.random() * 500,
+      price: Math.random() * 50000,
       change: 0,
       changePercent: 0,
     };
@@ -111,7 +117,7 @@ export default function PortfolioClient() {
         <Card>
           <CardHeader>
             <CardTitle>My Portfolio</CardTitle>
-            <CardDescription>Total Value: ${totalValue.toFixed(2)}</CardDescription>
+            <CardDescription>Total Value: {formatCurrency(totalValue)}</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
@@ -133,14 +139,16 @@ export default function PortfolioClient() {
                       <div className="text-sm text-muted-foreground">{stock.name}</div>
                     </TableCell>
                     <TableCell>{stock.shares}</TableCell>
-                    <TableCell>${stock.price.toFixed(2)}</TableCell>
+                    <TableCell>{formatCurrency(stock.price)}</TableCell>
                     <TableCell className={stock.change >= 0 ? 'text-green-600' : 'text-red-600'}>
                       <div className="flex items-center">
                         {stock.change >= 0 ? <ArrowUpRight className="h-4 w-4" /> : <ArrowDownRight className="h-4 w-4" />}
-                        <span>${Math.abs(stock.change).toFixed(2)} ({stock.changePercent.toFixed(2)}%)</span>
+                        <span>
+                          {formatCurrency(Math.abs(stock.change))} ({stock.changePercent.toFixed(2)}%)
+                        </span>
                       </div>
                     </TableCell>
-                    <TableCell>${(stock.price * stock.shares).toFixed(2)}</TableCell>
+                    <TableCell>{formatCurrency(stock.price * stock.shares)}</TableCell>
                     <TableCell className="text-right">
                        <Button variant="ghost" size="icon" onClick={() => removeStock(stock.ticker)}>
                          <Trash2 className="h-4 w-4 text-muted-foreground" />

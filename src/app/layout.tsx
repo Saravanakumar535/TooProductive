@@ -3,8 +3,11 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "PersonalZenith",
+  title: "TooProductive",
   description: "Your AI-powered productivity hub for personal organization.",
+  icons: {
+    icon: "/logo.png", 
+  },
 };
 
 export default function RootLayout({
