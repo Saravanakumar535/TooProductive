@@ -1,24 +1,43 @@
-# 🚀 TooProductive
+TooProductive 🚀
 
-TooProductive is a **frontend productivity dashboard** that combines multiple tools into one place — including task management, expense tracking, reading progress, and productivity insights.  
-It’s designed to help you **stay organized and motivated** with a clean and modern interface.
+All-in-one productivity powerhouse to manage your tasks, track your reading, log your learning, and stay on top of your goals — now with AI assistance.
 
----
+📌 Overview
 
-## ✨ Features
+TooProductive is a fullstack web application built with Next.js App Router that combines task management, reading tracking, daily learning logs, finance tracking, and gamified productivity features — all in one place.
 
-- **📋 Task Management** – Create, edit, and delete tasks easily.
-- **💰 Expense Tracking** – Keep a record of expenses and compare trends.
-- **📚 Reading Tracker** – Track your reading progress with last-read details.
-- **📝 Daily Learning Log** – Write down what you’ve learned each day.
-- **🎯 Gamification Ready** – Space for future points, badges, and achievements.
+This app is currently in local development and runs fully on your machine.
 
----
+✨ Features
 
-## 🛠 Tech Stack
+✅ Task Manager — Create, update, and prioritize tasks with deadlines
 
-- **Framework:** React (with Vite for fast development)
-- **Language:** JavaScript
-- **State Management:** Zustand
-- **Styling:** Tailwind CSS
-- **Storage:** LocalStorage (no backend yet)
+📖 Reading Tracker — Track books, progress, and last-read details
+
+🧠 Daily Learning Log — Summarize what you learned today (AI-powered)
+
+💰 Finance Tracker — Monitor expenses & income with visual charts
+
+🎯 Gamification — Earn points, badges, and streaks for completing goals
+
+🤖 AI Assistance — Get summaries, insights, and encouragement powered by Google’s Gemini AI
+
+📊 Insights Dashboard — Visualize progress across all productivity areas
+
+🛠 Tech Stack
+
+Framework: Next.js (App Router)
+
+Language: TypeScript
+
+UI Library: React + Tailwind CSS
+
+Component Library: ShadCN UI
+
+Icons: Lucide React
+
+AI: Genkit with Google Gemini models
+
+Styling: Tailwind CSS
+
+Backend: Next.js API Routes (Server Components)
